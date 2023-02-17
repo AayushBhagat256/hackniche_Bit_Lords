@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-h1xei@0yz&sd*g5o0)@jt3hz_%uz^1n-km6)591549p!8bb1k0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1' ,'dev1106.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'environ',
     'drf_yasg',
     'rest_framework_swagger',
+    'corsheaders',
 
     # my apps
     'user',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -183,3 +185,5 @@ import os
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+CORS_ORIGIN_ALLOW_ALL = True
