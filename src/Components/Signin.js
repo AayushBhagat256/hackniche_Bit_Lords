@@ -14,6 +14,7 @@ import axios from 'axios';
 
 function Signin() {
   const [success,setSuccess] = useState(false);
+  const [army,setArmy]=useState(false)
 
   const container = document.querySelector(".container");
 
@@ -45,38 +46,19 @@ function Signin() {
 
   const addData = (e) => {
     e.preventDefault();
-    const getuserArr = localStorage.getItem("useryoutube");
-    console.log(getuserArr);
-    const { email, password } = inpval;
-    setErrors(Validation(inpval));
-    setDataIsCorrect(true);
-    const newRecords = { ...inpval, id: new Date().getTime().toString() };
-    setRecords([...records, newRecords])
-
-    if (getuserArr && getuserArr.length) {
-      const userdata = JSON.parse(getuserArr);
-      const userlogin = userdata.filter((el, k) => {
-        return el.email === email && el.password === password
-      });
-      if (userlogin.length === 0) {
-        alert("This account doesn't exist!")
-      }
-      else {
-        console.log("User Login Successfully!")
-        const otp = prompt("Enter your otp")
-        const numtp = parseInt(otp);
-        //var axios = require('axios');
+    //var axios = require('axios');
 var data = JSON.stringify({
-  "code": numtp,
-  "email": inpval.email
+  "email": "aayush91103@gmail.com",
+  "password": "Pass@12345"
 });
 
 var config = {
   method: 'post',
 maxBodyLength: Infinity,
-  url: 'http://127.0.0.1:8000/user/register/verify/',
+  url: 'http://127.0.0.1:8000/user/loginview/',
   headers: { 
-    'Content-Type': 'application/json'  
+    'Content-Type': 'application/json', 
+    'Cookie': 'csrftoken=CL9F2B4Csic4i8aKWfSdfJKNSwoevUrQ; sessionid=4or759omow7gdv8nffx4pvl6y3bv2hkj'
   },
   data : data
 };
@@ -84,20 +66,19 @@ maxBodyLength: Infinity,
 axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data));
-  alert("Logged in")
+  alert("yess..")
   setSuccess(true)
-  console.log("here is it "+response.data.soldier)
+  localStorage.setItem("Token",response.data.Token)
+  localStorage.setItem("vet1",response.data.soldier)
+  console.log(localStorage)
 })
 .catch(function (error) {
   console.log(error);
-  alert("Bhai yaar nhi plz")
 });
 
-        // history("/Gridcomp")
-      }
+      
     }
-
-  }
+  
   const [isSignup, setIsSignup] = useState(false);
   const [inputs, setInputs] = useState({
     email: "", password: "",

@@ -17,9 +17,12 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import { Menu } from '@mui/icons-material';
 import axios from 'axios';
+import Otp from './Otp';
 
 
 function Signup() {
+  const [otp,setOtp] = useState("");
+  const [displayy,setDisplayy]=useState(false)
 
     const [inpval,setInpval]=useState({
         firstname:"",lastname:'', email:"",password:"",phone_number:'',isveteran:''
@@ -88,6 +91,7 @@ function Signup() {
                 .then(function (response) {
                   console.log(JSON.stringify(response.data));
                   alert("Success")
+                  setDisplayy(true)
                 })
                 .catch(function (error) {
                   console.log(error);
@@ -161,8 +165,10 @@ function Signup() {
         } 
   return (
         
-    
-    <div className="container">
+    <>
+    {
+      displayy?(<Otp/>):(
+        <div className="container">
       <div className="forms-container">
         <div className="signin-signup">
         <form  style={
@@ -285,7 +291,10 @@ function Signup() {
          
       </div>
     </div>
-
+      )
+    }
+    
+    </>
   
   
   )
