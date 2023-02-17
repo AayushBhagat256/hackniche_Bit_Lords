@@ -36,7 +36,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     Profilepic = models.FileField(upload_to='user_profile/', null=True, blank=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username',]
+    REQUIRED_FIELDS = []
 
 
     objects = CustomUserManager()

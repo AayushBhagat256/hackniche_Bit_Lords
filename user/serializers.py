@@ -26,14 +26,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
             email=self.validated_data['email'],
             username=self.validated_data['username'],
             soldier=self.validated_data['soldier'],
-            # fname=self.validated_data['fname'],
-            # lname=self.validated_data['lname'],
-            # contact_no=self.validated_data['contact_no'],
-            # bio=self.validated_data['bio'],
-            # served_with=self.validated_data['served_with'],
-            # start_of_service=self.validated_data['start_of_service'],
-            # end_of_service=self.validated_data['end_of_service'],
-            # Profilepic=self.validated_data['Profilepic'],
         )
         password = self.validated_data['password']
         password2 = self.validated_data['password2']

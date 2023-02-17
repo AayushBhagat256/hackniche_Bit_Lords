@@ -14,11 +14,13 @@ from rest_framework.parsers import FileUploadParser,FormParser,MultiPartParser
 class Registration(GenericAPIView):
     permission_classes=[AllowAny]
     serializer_class = RegistrationSerializer
+    
     def post(self, request):
         serializer = RegistrationSerializer(data=request.data)
         data={}
         if serializer.is_valid():
             account=serializer.save()
+            print(type(account))
             token= Token.objects.get(user=account).key
             data['serializer_data']=serializer.data
             data['token']=token
