@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include,re_path
 from . import settings
+from chat import views as cviews
 
 from rest_framework_swagger.views import get_swagger_view
 
@@ -42,6 +43,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
     path('blog/', include('blog.urls')),
+    path('', cviews.home, name='home'),
+    path('room/<str:room>/', cviews.room, name='room'),
+    path('send', cviews.send, name='send'),
+    path('<str:room>/', cviews.room, name='room'),
+    path('checkview', cviews.checkview, name='checkview'),
+    path('getMessages/<str:room>/', cviews.getMessages, name='getMessages'),
 ]
 
 from django.conf import settings
