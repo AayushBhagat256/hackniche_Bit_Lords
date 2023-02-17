@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-h1xei@0yz&sd*g5o0)@jt3hz_%uz^1n-km6)591549p!8bb1k0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1' ,'dev1106.pythonanywhere.com']
 
 
 # Application definition
@@ -37,6 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #added
+
+    'rest_framework',
+    'rest_framework.authtoken',
+    'environ',
+    'drf_yasg',
+    'rest_framework_swagger',
+
+    # my apps
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +133,46 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# added from here
+
+AUTH_USER_MODEL = 'user.UserProfile'
+
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+SECRET_KEY = env("SECRET_KEY")
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = env("EMAIL")
+EMAIL_HOST_PASSWORD = env("PASSWORD")
+EMAIL_PORT = 587
+
+#added
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+    ),
+}
+#Changed swagger's security settings for taking token as login credintials
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS' : {
+        'Bearer' : {
+            'type' : 'apiKey',
+            'name' : 'Authorization',
+            'in' : 'header'
+        }
+    }
+}
