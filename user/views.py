@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from .models import UserProfile,CodeEmail
 from rest_framework.generics import GenericAPIView
-from .serializers import RegistrationSerializer, CodeSerializer
+from .serializers import RegistrationSerializer, CodeSerializer, ProfileSerializer
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework import status
 from rest_framework.authtoken.models import Token
@@ -48,3 +48,29 @@ class User_logout(GenericAPIView):
     def get(self,request):
         logout(request)
         return Response('User Logged out successfully')  
+
+
+class Profile(GenericAPIView):
+    permission_classes=[IsAuthenticated]
+    serializer_class = ProfileSerializer
+    parser_classes = (FormParser, MultiPartParser)
+
+    def get_object(self,request):
+            try:
+                return UserProfile.objects.get(pk=request.user)
+            except UserProfile.DoesNotExist:
+                raise status.HTTP_404_NOT_FOUND
+
+    def get(self, request):
+        user = self.get_object(request)
+        serializer = ProfileSerializer(user)
+        return Response(serializer.data, status=status.HTTP_302_FOUND)
+
+    def put(self, request):
+        user = self.get_object(request)
+        serializer = ProfileSerializer(user, data= request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+  
