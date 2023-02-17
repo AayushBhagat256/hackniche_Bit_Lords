@@ -4,14 +4,14 @@ from user.models import UserProfile
 import datetime
 
 class BlogSerializer(serializers.ModelSerializer):
-
     author = serializers.SlugRelatedField(
         queryset=UserProfile.objects.all(),
         slug_field='email'
     )
+    picture = serializers.ImageField(required= False)
     class Meta:
         model = BlogPost
-        fields = '__all__'
+        fields = ['title','author','updated_on','content','status','picture']
 
     def save(self):
         # user =self.validated_data['author']
@@ -23,3 +23,6 @@ class BlogSerializer(serializers.ModelSerializer):
             updated_on=datetime.datetime.now()
         )
         blog_inst.save()
+        return blog_inst
+
+    

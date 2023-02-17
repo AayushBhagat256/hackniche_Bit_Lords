@@ -33,6 +33,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     served_with = models.CharField(max_length=2, choices=SERVED_WITH_CHOICES, null=True)
     start_of_service = models.DateTimeField(blank=True, null=True)
     end_of_service = models.DateTimeField(blank=True, null=True)
+    Profilepic = models.FileField(upload_to='user_profile/', null=True, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]

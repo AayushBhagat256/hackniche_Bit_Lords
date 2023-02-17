@@ -4,7 +4,7 @@ from .models import BlogPost
 
 class CustomBlogPostAdmin(admin.ModelAdmin):
     model = BlogPost
-    list_display = ('title','author','updated_on','content','status')
+    list_display = ('title','author','updated_on','content','status','picture')
     list_filter = ('author',)
     search_fields = ('author',)
     ordering = ('title',)

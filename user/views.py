@@ -9,6 +9,7 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from django.contrib.auth import logout
+from rest_framework.parsers import FileUploadParser,FormParser,MultiPartParser
 
 class Registration(GenericAPIView):
     permission_classes=[AllowAny]
@@ -46,4 +47,4 @@ class User_logout(GenericAPIView):
     permission_classes=[IsAuthenticated]
     def get(self,request):
         logout(request)
-        return Response('User Logged out successfully')
+        return Response('User Logged out successfully')  
