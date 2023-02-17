@@ -31,7 +31,7 @@ import Signin from './Signin';
 import ChatBot from './ChatBot';
 // import Accordian from '../Pages/AboutUs';
 import Aboutme from './Aboutme';
-import Achive from './Achive';
+import Achive from './Achieve';
 import Benefits from './Benefits';
 
 const drawerWidth = 240;
