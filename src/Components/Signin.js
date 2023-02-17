@@ -76,7 +76,7 @@ var config = {
 maxBodyLength: Infinity,
   url: 'http://127.0.0.1:8000/user/register/verify/',
   headers: { 
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json'  
   },
   data : data
 };
