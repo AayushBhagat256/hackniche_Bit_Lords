@@ -25,7 +25,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         profile = UserProfile(
             email=self.validated_data['email'],
             username=self.validated_data['username'],
-            soldier=self.validated_data['username'],
+            soldier=self.validated_data['soldier'],
             # fname=self.validated_data['fname'],
             # lname=self.validated_data['lname'],
             # contact_no=self.validated_data['contact_no'],
@@ -86,5 +86,5 @@ class ProfileSerializer(serializers.ModelSerializer):
             end_of_service=self.validated_data['end_of_service'],
             Profilepic=self.validated_data['Profilepic'],
         )
-        blog_inst.save()
-        return blog_inst
+        profile.save()
+        return profile
