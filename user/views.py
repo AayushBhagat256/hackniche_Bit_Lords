@@ -3,13 +3,14 @@ from django.shortcuts import render
 # Create your views here.
 from .models import UserProfile,CodeEmail
 from rest_framework.generics import GenericAPIView
-from .serializers import RegistrationSerializer, CodeSerializer, ProfileSerializer
+from .serializers import RegistrationSerializer, CodeSerializer, ProfileSerializer, LoginSerializers
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
-from django.contrib.auth import logout
+from django.contrib.auth import logout,login
 from rest_framework.parsers import FileUploadParser,FormParser,MultiPartParser
+from django.contrib.auth import authenticate
 
 class Registration(GenericAPIView):
     permission_classes=[AllowAny]
@@ -27,6 +28,16 @@ class Registration(GenericAPIView):
             return Response(data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class LoginAPIView(GenericAPIView):
+    permission_classes=[AllowAny]
+    def post(self, request, *args, **kwargs):
+        serializer = LoginSerializers(data=request.data, context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        login(request,user)
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({"status": status.HTTP_200_OK, "Token": token.key, "soldier":user.soldier, "email_id":user.email})        
+
 class CodeView(GenericAPIView): 
     permission_classes=[AllowAny]
     serializer_class = CodeSerializer
@@ -37,7 +48,10 @@ class CodeView(GenericAPIView):
                 user=UserProfile.objects.get(email=serializer.validated_data['email'])
                 user.is_active = True
                 user.save()
-                return Response('Email successfully confirmed')
+                data={}
+                data['serializer_data']=serializer.data
+                data['soldier']=user.soldier
+                return Response(data, status=status.HTTP_201_CREATED)
             else:
                 return Response({'message':'not equal'})
         else:

@@ -8,7 +8,7 @@ from .models import UserProfile
 
 class CustomUserAdmin(UserAdmin):
     model = UserProfile
-    list_display = ('email','is_superuser','is_staff','is_active')
+    list_display = ('email','is_superuser','is_staff','is_active','soldier')
     list_filter = ('is_staff','soldier')
     search_fields = ('email',)
     ordering = ('email',)

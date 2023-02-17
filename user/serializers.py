@@ -7,6 +7,7 @@ from hacknicheproject.settings import EMAIL_HOST_USER,EMAIL_HOST_PASSWORD
 from django.core.mail import send_mail
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework.authtoken.models import Token
+from django.contrib.auth import authenticate
 
 import random
 
@@ -79,3 +80,30 @@ class ProfileSerializer(serializers.ModelSerializer):
         )
         profile.save()
         return profile
+
+class LoginSerializers(serializers.Serializer):
+    email = serializers.CharField(max_length=255)
+    password = serializers.CharField(
+        label=("Password"),
+        style={'input_type': 'password'},
+        trim_whitespace=False,
+        max_length=128,
+        write_only=True
+    )
+
+    def validate(self, data):
+        username = data.get('email')
+        password = data.get('password')
+
+        if username and password:
+            user = authenticate(request=self.context.get('request'), username=username, password=password)
+            if not user:
+                msg = ('Unable to log in with provided credentials.')
+                raise serializers.ValidationError(msg, code='authorization')
+        else:
+            msg = ('Must include "username" and "password".')
+            raise serializers.ValidationError(msg, code='authorization')
+
+        data['user'] = user
+
+        return data

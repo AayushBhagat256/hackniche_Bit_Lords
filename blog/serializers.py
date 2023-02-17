@@ -23,6 +23,7 @@ class BlogSerializer(serializers.ModelSerializer):
             updated_on=datetime.datetime.now()
         )
         blog_inst.save()
+        
         return blog_inst
 
     
