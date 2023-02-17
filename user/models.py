@@ -37,6 +37,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
 
+    lookup_field = 'email'
+
     objects = CustomUserManager()
 
     def __str__(self):
