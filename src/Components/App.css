@@ -443,3 +443,9 @@ form.sign-in-form {
 .homemain{
   height: 94vh;
 }
+
+.card img{
+  aspect-ratio: 1;
+  /* filter: grayscale(1); */
+  object-fit: fill;
+}
