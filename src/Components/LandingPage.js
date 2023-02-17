@@ -29,6 +29,8 @@ import InfoIcon from '@mui/icons-material/Info';
 import { Button } from '@mui/material';
 import Signin from './Signin';
 import ChatBot from './ChatBot';
+// import Accordian from '../Pages/AboutUs';
+import Aboutme from './Aboutme';
 
 const drawerWidth = 240;
 
@@ -297,7 +299,7 @@ export default function MiniDrawer() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 ,backgroundColor:"#fefbe9"}}>
         <DrawerHeader />
         {menuData==="Home" && <Signin/>}
-        {/* {menuData==="About Me" && <AboutMe/>} */}
+        {menuData==="About Me" && <Aboutme/>}
         {/* {menuData==="Contact Me" && <Form/>} */}
         {/* {menuData==="Project" && <Project/>} */}
         {menuData==="ChatBot" && <ChatBot/>}

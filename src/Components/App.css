@@ -427,3 +427,6 @@ form.sign-in-form {
   display: flex;
   justify-content: center;
 }
+.aboutmain{
+  height: 94vh;
+}
