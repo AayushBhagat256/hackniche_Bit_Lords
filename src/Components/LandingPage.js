@@ -31,6 +31,8 @@ import Signin from './Signin';
 import ChatBot from './ChatBot';
 // import Accordian from '../Pages/AboutUs';
 import Aboutme from './Aboutme';
+import Achive from './Achive';
+import Benefits from './Benefits';
 
 const drawerWidth = 240;
 
@@ -201,7 +203,7 @@ export default function MiniDrawer() {
         </List>
         <Divider/>
         <List>
-        <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>{setMenuData("Project")}}>
+        <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>{setMenuData("benefits")}}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -220,10 +222,10 @@ export default function MiniDrawer() {
                    {/* <MailIcon /> */}
                    <ConstructionOutlinedIcon/>
                 </ListItemIcon>
-                <ListItemText primary="Sec 1" sx={{ opacity: open ? 1 : 0 }}  />
+                <ListItemText primary="Benefits" sx={{ opacity: open ? 1 : 0 }}  />
               </ListItemButton>
             </ListItem>
-            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>{setMenuData("Skill")}}>
+            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>{setMenuData("Achieve")}}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -242,7 +244,7 @@ export default function MiniDrawer() {
                    {/* <MailIcon /> */}
                    <WorkspacePremiumIcon/>
                 </ListItemIcon>
-                <ListItemText primary="Sec 2" sx={{ opacity: open ? 1 : 0 }}  />
+                <ListItemText primary="Achieve" sx={{ opacity: open ? 1 : 0 }}  />
               </ListItemButton>
             </ListItem>
         </List>
@@ -300,8 +302,8 @@ export default function MiniDrawer() {
         <DrawerHeader />
         {menuData==="Home" && <Signin/>}
         {menuData==="About Me" && <Aboutme/>}
-        {/* {menuData==="Contact Me" && <Form/>} */}
-        {/* {menuData==="Project" && <Project/>} */}
+        {menuData==="benefits" && <Benefits/>}
+        {menuData==="Achieve" && <Achive/>}
         {menuData==="ChatBot" && <ChatBot/>}
         {/* <br /> */}
         {/* <Form/> */}
