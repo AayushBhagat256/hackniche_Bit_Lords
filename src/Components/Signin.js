@@ -63,6 +63,36 @@ function Signin() {
       }
       else {
         console.log("User Login Successfully!")
+        const otp = prompt("Enter your otp")
+        const numtp = parseInt(otp);
+        //var axios = require('axios');
+var data = JSON.stringify({
+  "code": numtp,
+  "email": inpval.email
+});
+
+var config = {
+  method: 'post',
+maxBodyLength: Infinity,
+  url: 'http://127.0.0.1:8000/user/register/verify/',
+  headers: { 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+  alert("Logged in")
+  setSuccess(true)
+  console.log("here is it "+response.data.soldier)
+})
+.catch(function (error) {
+  console.log(error);
+  alert("Bhai yaar nhi plz")
+});
+
         // history("/Gridcomp")
       }
     }

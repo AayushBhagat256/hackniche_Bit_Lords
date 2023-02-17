@@ -54,9 +54,11 @@ function Signup() {
        e.preventDefault();
         if(vet==="yes"){
             console.log(true)
+            setBolvet(true)
         }
         else if(vet==='no'){
             console.log(false)
+            setBolvet(false)
         }
        const {firstname,lastname,email,password,phone_number}=inpval;
        setErrors(Validation(inpval));
@@ -64,7 +66,33 @@ function Signup() {
                const newRecords={...inpval, id:new Date().getTime().toString()};
                setRecords([...records,newRecords])
    
-                localStorage.setItem("useryoutube",JSON.stringify([...data,inpval]));
+                // localStorage.setItem("useryoutube",JSON.stringify([...data,inpval]));
+                var data = JSON.stringify({
+                  "email": inpval.email,
+                  "password": inpval.password,
+                  "password2": inpval.password,
+                  "soldier": bolvet
+                });
+                
+                var config = {
+                  method: 'post',
+                maxBodyLength: Infinity,
+                  url: 'http://127.0.0.1:8000/user/register/',
+                  headers: { 
+                    'Content-Type': 'application/json'
+                  },
+                  data : data
+                };
+                
+                axios(config)
+                .then(function (response) {
+                  console.log(JSON.stringify(response.data));
+                  alert("Success")
+                })
+                .catch(function (error) {
+                  console.log(error);
+                  alert("console dekh")
+                });
    
    
    
@@ -81,11 +109,11 @@ function Signup() {
                e.preventDefault();
                if(selectedOption){
                     console.log("true")
-                    setBolvet(true)
+                    
                }
                else{
                 console.log("false")
-                setBolvet(false)
+                
                }
     
                setErrors(Validation(inputs));
@@ -94,33 +122,8 @@ function Signup() {
                setRecords([...records,newRecords])
 
                //lets add signup API
-              // var axios = require('axios');
-var data = JSON.stringify({
-  "email": inpval.email,
-  "password": inpval.password,
-  "password2": inpval.password,
-  "soldier": bolvet
-});
+             //var axios = require('axios');
 
-var config = {
-  method: 'post',
-maxBodyLength: Infinity,
-  url: 'http://devtest.pythonanywhere.com/user/register/',
-  headers: { 
-    'Content-Type': 'application/json'
-  },
-  data : data
-};
-
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-  alert("party")
-})
-.catch(function (error) {
-  console.log(error);
-  alert("console dekh error ke liye")
-});
 
        
    
