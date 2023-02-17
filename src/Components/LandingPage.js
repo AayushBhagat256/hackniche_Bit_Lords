@@ -33,6 +33,7 @@ import ChatBot from './ChatBot';
 import Aboutme from './Aboutme';
 import Achive from './Achieve';
 import Benefits from './Benefits';
+import Home from './Home';
 
 const drawerWidth = 240;
 
@@ -300,7 +301,7 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 ,backgroundColor:"#fefbe9"}}>
         <DrawerHeader />
-        {menuData==="Home" && <Signin/>}
+        {menuData==="Home" && <Home/>}
         {menuData==="About Me" && <Aboutme/>}
         {menuData==="benefits" && <Benefits/>}
         {menuData==="Achieve" && <Achive/>}
