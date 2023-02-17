@@ -4,7 +4,7 @@ import Typewriter from 'typewriter-effect'
 // import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import salute from './salute.jpg'
-
+import './App.css'
 
 function LandingPage() {
     return (
@@ -77,13 +77,13 @@ function LandingPage() {
                 <div className="buttons">
                     {/* <h1>hi here will be login button</h1> */}
                     <div class="box-1">
-                        <div class="btn btn-one">
+                        <div class="btnn btn-one">
                             <span>Log-In</span>
                         </div>
                     </div>
                     {/* Register  */}
                     <div class="box-1">
-                        <div class="btn btn-one">
+                        <div class="btnn btn-one">
                             <span>Register</span>
                         </div>
                     </div>
