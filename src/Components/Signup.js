@@ -16,6 +16,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import { Menu } from '@mui/icons-material';
+import axios from 'axios';
 
 
 function Signup() {
@@ -74,21 +75,52 @@ function Signup() {
                firstname:"",lastname:'', email:"",password:"",phone_number:''
    
      });
-   
+     const [bolvet,setBolvet] = useState(false)
      const [records,setRecords]=useState([]);
      const handlesubmit=(e)=>{
                e.preventDefault();
                if(selectedOption){
                     console.log("true")
+                    setBolvet(true)
                }
                else{
                 console.log("false")
+                setBolvet(false)
                }
     
                setErrors(Validation(inputs));
                setDataIsCorrect(true);
                const newRecords={...inputs, id:new Date().getTime().toString()};
                setRecords([...records,newRecords])
+
+               //lets add signup API
+              // var axios = require('axios');
+var data = JSON.stringify({
+  "email": inpval.email,
+  "password": inpval.password,
+  "password2": inpval.password,
+  "soldier": bolvet
+});
+
+var config = {
+  method: 'post',
+maxBodyLength: Infinity,
+  url: 'http://devtest.pythonanywhere.com/user/register/',
+  headers: { 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+  alert("party")
+})
+.catch(function (error) {
+  console.log(error);
+  alert("console dekh error ke liye")
+});
 
        
    
