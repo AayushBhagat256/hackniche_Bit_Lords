@@ -433,6 +433,10 @@ form.sign-in-form {
 .achivemain{
   height: auto;
 }
+.achivemain img{
+  aspect-ratio: 1;
+  object-fit: fill;
+}
 .benefitsmain{
   height: auto;
 }

@@ -64,7 +64,7 @@ function ChatBot() {
   return (
     <div className='chatbotcl'>
       <Container sx={{textAlign:'center'}}>
-        <h1>Hello chat bot</h1>
+        {/* <h1>Hello chat bot</h1> */}
         <div className="centerbot">
         <Chatbot steps={steps} />
         </div>
