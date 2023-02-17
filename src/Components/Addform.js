@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { Token } from '@mui/icons-material';
-// import * as fs from 'fs/promises';
+import { Box, TextField, Typography, Button } from '@mui/material'
+import EmailIcon from '@mui/icons-material/Email';
+import UserIcon from '@mui/icons-material/Email';
+import InputAdornment from '@mui/material/InputAdornment';
+import LockIcon from '@mui/icons-material/Lock';
+import CreateIcon from '@mui/icons-material/Create';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
 
 function Addform() {
     const [title, setTitle] = useState('');
@@ -9,71 +15,120 @@ function Addform() {
     const [content, setContent] = useState('');
     const [status, setStatus] = useState('');
     const [image, setImage] = useState('');
-    
+
     let token = localStorage.getItem("Token");
     console.log(token)
-  
+
     const handleSubmit = (event) => {
-      event.preventDefault();
-      //var axios = require('axios');
-var FormData = require('form-data');
-//var fs = require('fs');
-var data = new FormData();
-data.append('picture', (image));
-data.append('title', title);
-data.append('author', author);
-data.append('content', content);
-data.append('status', parseInt(status));
+        event.preventDefault();
+        //var axios = require('axios');
+        var FormData = require('form-data');
+        //var fs = require('fs');
+        var data = new FormData();
+        data.append('picture', (image));
+        data.append('title', title);
+        data.append('author', author);
+        data.append('content', content);
+        data.append('status', parseInt(1));
 
-var config = {
-  method: 'post',
-maxBodyLength: Infinity,
-  url: 'http://127.0.0.1:8000/blog/bloglist/',
-  headers: { 
-    'Authorization': 'Token '+token, 
-    'Cookie': 'csrftoken=CL9F2B4Csic4i8aKWfSdfJKNSwoevUrQ; sessionid=4or759omow7gdv8nffx4pvl6y3bv2hkj', 
-    //...data.getHeaders()
-  },
-  data : data
-};
+        var config = {
+            method: 'post',
+            maxBodyLength: Infinity,
+            url: 'http://127.0.0.1:8000/blog/bloglist/',
+            headers: {
+                'Authorization': 'Token ' + token,
+                'Cookie': 'csrftoken=CL9F2B4Csic4i8aKWfSdfJKNSwoevUrQ; sessionid=4or759omow7gdv8nffx4pvl6y3bv2hkj',
+                //...data.getHeaders()
+            },
+            data: data
+        };
 
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-  alert("lets Siuu")
-})
-.catch(function (error) {
-  console.log(error);
-  alert("its not ok")
-});
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                alert("lets Siuu")
+            })
+            .catch(function (error) {
+                console.log(error);
+                alert("its not ok")
+            });
 
     }
-  
+
     return (
-      <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} />
-        </label>
-        <label>
-          Author's Email:
-          <input type="email" value={author} onChange={(event) => setAuthor(event.target.value)} />
-        </label>
-        <label>
-          Content:
-          <textarea value={content} onChange={(event) => setContent(event.target.value)} />
-        </label>
-        <label>
-          Status:
-          <input type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
-        </label>
-        <label>
-          Image:
-          <input type="file" onChange={(event) => setImage(event.target.files[0])} />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+        <div style={{alignItems:"center",
+        justifyContent:"center"}}>
+
+            <form style={
+                {
+
+                    color: "#4d84e2",
+                    maxWidth: "600px",
+                    maxHeight: "650px"
+                }}
+                onSubmit={handleSubmit}
+            >
+
+                <Typography variant="h4" style={{ color: "#5a5a5a" }} textAlign="center" >
+                    <strong> Add Your Blog!</strong>
+                </Typography>
+                <TextField
+                    id="input-with-icon-textfield"
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                < UserIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                    className="TextField-with-border-radius" fullWidth value={title} onChange={(event) => setTitle(event.target.value)} margin="normal" type={'text'} variant="outlined" placeholder="Name:" />
+                <TextField
+                    id="input-with-icon-textfield"
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                < EmailIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                    className="TextField-with-border-radius" fullWidth margin="normal" value={author} onChange={(event) => setAuthor(event.target.value)} type={'email'} variant="outlined" placeholder="Email:" />
+                <TextField
+                    id="input-with-icon-textfield"
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                < CreateIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                    className="TextField-with-border-radius" fullWidth value={content} onChange={(event) => setContent(event.target.value)} margin="normal" type={'text'} variant="outlined" placeholder="Description:" />
+
+                <TextField
+                    id="input-with-icon-textfield"
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                < FileCopyIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                    className="TextField-with-border-radius" fullWidth margin="normal" onChange={(event) => setImage(event.target.files[0])} type={'file'} variant="outlined" placeholder="Attach image here:" />
+
+                <Button className="btn" type="submit" variant="contained" sx={{ borderRadius: "30px", marginTop: "5px" }}>
+                    Submit
+                </Button>
+
+            </form>
+
+
+
+
+
+
+        </div>
+
+
     );
-  }
+}
 
 export default Addform

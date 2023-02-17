@@ -120,7 +120,7 @@ export default function MiniDrawer() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       {/* elevation used to adjust shadow */}
-      <AppBar position="fixed" sx={{backgroundColor:"#fefbe9",color:"black"}} elevation={3}>
+      <AppBar position="fixed" sx={{backgroundColor:"#28282B",color:"white"}} elevation={3}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -144,7 +144,8 @@ export default function MiniDrawer() {
       </AppBar>
       <Drawer variant="permanent" open={open} PaperProps={{
     sx: {
-      backgroundColor:"#fefbe9"
+      backgroundColor:"#28282B",
+      color:'white'
     }
   }}>
         <DrawerHeader>
@@ -172,7 +173,7 @@ export default function MiniDrawer() {
                   }}
                 >
                    {/* <MailIcon /> */}
-                   <HomeIcon/>
+                   <HomeIcon sx={{color:"white"}}/>
                 </ListItemIcon>
                 <ListItemText primary="Home"  sx={{ opacity: open ? 1 : 0 }}  />
               </ListItemButton>
@@ -195,7 +196,7 @@ export default function MiniDrawer() {
                   }}
                 >
                    {/* <MailIcon /> */}
-                   <InfoIcon/>
+                   <InfoIcon  sx={{color:"white"}}/>
                 </ListItemIcon>
                 <ListItemText primary="About Me" sx={{ opacity: open ? 1 : 0 }}  />
               </ListItemButton>
@@ -221,7 +222,7 @@ export default function MiniDrawer() {
                   }}
                 >
                    {/* <MailIcon /> */}
-                   <ConstructionOutlinedIcon/>
+                   <ConstructionOutlinedIcon  sx={{color:"white"}}/>
                 </ListItemIcon>
                 <ListItemText primary="Benefits" sx={{ opacity: open ? 1 : 0 }}  />
               </ListItemButton>
@@ -243,7 +244,7 @@ export default function MiniDrawer() {
                   }}
                 >
                    {/* <MailIcon /> */}
-                   <WorkspacePremiumIcon/>
+                   <WorkspacePremiumIcon  sx={{color:"white"}}/>
                 </ListItemIcon>
                 <ListItemText primary="Achieve" sx={{ opacity: open ? 1 : 0 }}  />
               </ListItemButton>
@@ -268,7 +269,7 @@ export default function MiniDrawer() {
                   }}
                 >
                    {/* <MailIcon /> */}
-                   <ConnectWithoutContactIcon/>
+                   <ConnectWithoutContactIcon  sx={{color:"white"}}/>
                 </ListItemIcon>
                 <ListItemText primary="ChatBot" sx={{ opacity: open ? 1 : 0 }}  />
               </ListItemButton>
