@@ -7,16 +7,18 @@ import {
   Routes,
 
 } from "react-router-dom";
+import LandingPage from './Components/LandingPage';
 
 
 
 function App() {
   return (
-    <Routes>
-    <Route path='/' element={<Signin/>}/>
-    <Route path='/Signin' element={<Signin/>}/>
-    <Route path='/Signup' element={<Signup/>}/>
-    </Routes>
+    // <Routes>
+    // <Route path='/' element={<Signin/>}/>
+    // <Route path='/Signin' element={<Signin/>}/>
+    // <Route path='/Signup' element={<Signup/>}/>
+    // </Routes>
+    <LandingPage/>
   );
 }
 

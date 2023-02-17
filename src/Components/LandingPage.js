@@ -1,97 +1,89 @@
-import React from 'react'
-import BrandExample from './NavLand'
-import Typewriter from 'typewriter-effect'
-// import React from 'react'
-import Carousel from 'react-bootstrap/Carousel';
-import salute from './salute.jpg'
-import './App.css'
+import * as React from 'react';
+import { styled, alpha } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputBase from '@mui/material/InputBase';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 
-function LandingPage() {
-    return (
-        <div>
-            <BrandExample />
-            {/* <Carousel/> */}
-            <div className="caurosel">
-                <Carousel>
-                    <Carousel.Item>
-                        <a href="/" >
-                            <img
-                                className="d-block w-100"
-                                height={550}
-                                src={salute}
-                                alt="First slide"
-                            />
-                        </a>
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
 
-                        <Carousel.Caption style={{ textDecoration: 'none', color: 'black' }}>
-                            <h3><a href="https://weatherapp-256.netlify.app/" style={{ color: 'black' }}>Weather App</a></h3>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            height={550}
-                            className="d-block w-100"
-                            src={salute}
-                            alt="Second slide"
-                        />
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
 
-                        <Carousel.Caption>
-                            <h3 className='pro2'>Recipe Pool</h3>
-                            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            height={550}
-                            src={salute}
-                            alt="Third slide"
-                        />
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
+}));
 
-                        <Carousel.Caption>
-                            <h3>Quiz App</h3>
-                            {/* <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p> */}
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
-            </div>
-
-            <div className="content">
-                <div className="typingquotes">
-                    <Typewriter
-                        options={{
-                            loop: true,
-                            autoStart: true,
-                            delay: 50,
-                            strings: [
-                                "For the veteran, thank you for bravely doing what you’re called to do so we can safely do what we’re free to do.",
-                                "They are not just soldiers they are our heroes",
-                                "A hero is someone who has given his or her life to something bigger than oneself."
-                            ]
-                        }}
-                    />
-                </div>
-                <br />
-                <div className="buttons">
-                    {/* <h1>hi here will be login button</h1> */}
-                    <div class="box-1">
-                        <div class="btnn btn-one">
-                            <span>Log-In</span>
-                        </div>
-                    </div>
-                    {/* Register  */}
-                    <div class="box-1">
-                        <div class="btnn btn-one">
-                            <span>Register</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    )
+export default function SearchAppBar() {
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+          >
+            MUI
+          </Typography>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
 }
-
-export default LandingPage
