@@ -84,7 +84,7 @@ function Home() {
     return (
         <div className='homemain'>
             <div style={{justifyContent:"center"}}>
-            <Button variant='outlined'  sx={{ borderRadius: "30px", marginTop: "5px",color:"black"}} onClick={addform}> Share Your Moments</Button>
+            <Button variant='outlined'  sx={{ borderRadius: "30px", marginTop: "5px",color:"black"}} onClick={addform}> Share Your Experience</Button>
             </div>
             
             {
