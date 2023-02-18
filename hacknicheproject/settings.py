@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework_swagger',
     'corsheaders',
+    'razorpay',
 
     # my apps
     'user',
@@ -194,3 +195,17 @@ CORS_ORIGIN_WHITELIST = (
        'http://localhost:5000',
        'http://localhost:8000'
 )
+
+RAZORPAY_API_KEY = env("Razorpay_id")
+RAZORPAY_API_SECRET_KEY = env("Razorpay_key")
+
+#Changed swagger's security settings for taking token as login credintials
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS' : {
+        'Bearer' : {
+            'type' : 'apiKey',
+            'name' : 'Authorization',
+            'in' : 'header'
+        }
+    }
+}

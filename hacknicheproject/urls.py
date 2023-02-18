@@ -49,6 +49,7 @@ urlpatterns = [
     path('<str:room>/', cviews.room, name='room'),
     path('checkview', cviews.checkview, name='checkview'),
     path('getMessages/<str:room>/', cviews.getMessages, name='getMessages'),
+    path('payment/', include('payment.urls'), name='payment'),
 ]
 
 from django.conf import settings
