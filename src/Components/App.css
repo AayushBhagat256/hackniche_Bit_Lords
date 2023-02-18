@@ -441,11 +441,14 @@ form.sign-in-form {
   height: auto;
 }
 .homemain{
-  height: 94vh;
+  height: auto;
 }
 
 .card img{
   aspect-ratio: 1;
   /* filter: grayscale(1); */
   object-fit: fill;
+}
+.addbody{
+  height: 90vh;
 }

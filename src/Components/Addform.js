@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { Token } from '@mui/icons-material';
-import { Box, TextField, Typography, Button } from '@mui/material'
+import { Box, TextField, Typography, Button, Container } from '@mui/material'
 import EmailIcon from '@mui/icons-material/Email';
 import UserIcon from '@mui/icons-material/Email';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -56,6 +56,8 @@ function Addform() {
     }
 
     return (
+        <div className='addbody'>
+        <Container sx={{minHeight:"93vh"}}>
         <div style={{alignItems:"center",
         justifyContent:"center"}}>
 
@@ -81,7 +83,7 @@ function Addform() {
                             </InputAdornment>
                         ),
                     }}
-                    className="TextField-with-border-radius" fullWidth value={title} onChange={(event) => setTitle(event.target.value)} margin="normal" type={'text'} variant="outlined" placeholder="Name:" />
+                    className="TextField-with-border-radius" fullWidth value={title} onChange={(event) => setTitle(event.target.value)} margin="normal" type={'text'} variant="outlined" placeholder="Title:" />
                 <TextField
                     id="input-with-icon-textfield"
                     InputProps={{
@@ -125,6 +127,8 @@ function Addform() {
 
 
 
+        </div>
+        </Container>
         </div>
 
 

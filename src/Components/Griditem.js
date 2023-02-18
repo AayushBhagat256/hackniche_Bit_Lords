@@ -40,26 +40,26 @@ axios(config)
   return (
 
        <div>
-        <div className="card mx-3">
+        <div className="card sm-3 my-4" style={{width:"400px",height:"525px"}}>
           <img
             src={imgurl+props.picture}
             className="card-img-top"
             alt="..."
-            height="400px"
-            width="350px"
+            height="250px"
+            width="150px"
           />
           <div className="card-body">
             <h5 className="card-title">
-              {props.title}...{" "}
-              <span class="position-absolute top-0  translate-middle badge rounded-pill bg-danger" style={{left:"90%",zIndex:"1"}}>
+              {props.title}{" "}
+              {/* <span class="position-absolute top-0  translate-middle badge rounded-pill bg-danger" style={{left:"90%",zIndex:"1"}}>
                 {props.content}
-              </span>
+              </span> */}
             </h5>
-            <p className="card-text">{props.content}...</p>
+            <p className="card-text">{props.content}</p>
             <p className="card-text">
               <small className="text-muted">
-                By: {props.author ? props.author : "Unknown"} | Published on:{" "}
-                {new Date(props.updated_on).toGMTString()}
+                Uploaded by: {props.author ? props.author : "Unknown"}
+                {/* {new Date(props.updated_on).toGMTString()} */}
               </small>
             </p>
             {/* <a href={props.newsurl} target="_blank" className="btn btn-sm btn-dark">

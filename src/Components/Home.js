@@ -12,6 +12,7 @@ import axios from 'axios';
 // import * as React from 'react';
 import Griditem from './Griditem'
 import Addform from './Addform';
+import './App.css'
 
 const actions = [
     { icon: <FileCopyIcon />, name: 'Copy' },
@@ -82,11 +83,13 @@ function Home() {
 
     return (
         <div className='homemain'>
+            <div style={{justifyContent:"center"}}>
+            <Button className="btn"  sx={{ borderRadius: "30px", marginTop: "5px"}} onClick={addform}> Add Your Blog?</Button>
+            </div>
+            
             {
                 openn ? (<Addform />) : (
                     <div className='onepar'>
-            <h1>This is home page</h1>
-            <h3>Here we will place blogs available to read</h3>
             <div className=" my-4 " >
 
                 <div className="row">
@@ -99,7 +102,7 @@ function Home() {
                 </div>
 
             </div>
-            <Button onClick={addform}>Add</Button>
+            
             </div>
                 )
             }
