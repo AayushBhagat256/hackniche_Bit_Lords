@@ -1,7 +1,7 @@
-body{
+/* body{
   background-image: linear-gradient(to right,#73b403,#fff);
   
-}
+} */
 .App {
   text-align: center;
   margin: 0%;
@@ -451,4 +451,24 @@ form.sign-in-form {
 }
 .addbody{
   height: 90vh;
+  width: 40vw;
+  /* background-color: chartreuse; */
+  margin: auto;
+  /* margin-top: auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+.grp1{
+  display: flex;
+  text-decoration: none;
+}
+.grp2{
+  display: flex;
+  text-decoration: none;
+}
+#chatsite{
+  margin-right: 4px;
 }

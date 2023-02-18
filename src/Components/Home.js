@@ -56,12 +56,12 @@ function Home() {
             .then(function (response) {
                 let articles = response.data;
                 console.log(JSON.stringify(articles));
-                alert("Its done good")
+                // alert("Its done good")
                 setBlog(articles)
             })
             .catch(function (error) {
                 console.log(error);
-                alert("Noob backend")
+                // alert("Noob backend")
             });
 
     }
@@ -84,7 +84,7 @@ function Home() {
     return (
         <div className='homemain'>
             <div style={{justifyContent:"center"}}>
-            <Button className="btn"  sx={{ borderRadius: "30px", marginTop: "5px"}} onClick={addform}> Add Your Blog?</Button>
+            <Button variant='outlined'  sx={{ borderRadius: "30px", marginTop: "5px",color:"black"}} onClick={addform}> Share Your Moments</Button>
             </div>
             
             {

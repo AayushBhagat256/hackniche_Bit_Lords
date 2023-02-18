@@ -8,6 +8,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import LockIcon from '@mui/icons-material/Lock';
 import CreateIcon from '@mui/icons-material/Create';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
+import PersonIcon from '@mui/icons-material/Person';
 
 function Addform() {
     const [title, setTitle] = useState('');
@@ -46,11 +47,10 @@ function Addform() {
         axios(config)
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
-                alert("lets Siuu")
+                alert("Added Successfully")
             })
             .catch(function (error) {
                 console.log(error);
-                alert("its not ok")
             });
 
     }
@@ -72,14 +72,14 @@ function Addform() {
             >
 
                 <Typography variant="h4" style={{ color: "#5a5a5a" }} textAlign="center" >
-                    <strong> Add Your Blog!</strong>
+                    <strong> Add </strong>
                 </Typography>
                 <TextField
                     id="input-with-icon-textfield"
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
-                                < UserIcon />
+                                < PersonIcon />
                             </InputAdornment>
                         ),
                     }}
@@ -95,7 +95,10 @@ function Addform() {
                     }}
                     className="TextField-with-border-radius" fullWidth margin="normal" value={author} onChange={(event) => setAuthor(event.target.value)} type={'email'} variant="outlined" placeholder="Email:" />
                 <TextField
-                    id="input-with-icon-textfield"
+                    id="outlined-multiline-flexible"
+
+                    multiline
+                    maxRows={4}
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">

@@ -66,7 +66,7 @@ maxBodyLength: Infinity,
 axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data));
-  alert("yess..")
+  // alert("")
   setSuccess(true)
   localStorage.setItem("Token",response.data.Token)
   localStorage.setItem("vet1",response.data.soldier)
